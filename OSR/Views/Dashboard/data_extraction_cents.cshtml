@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "DATA EXTRACTION CENTS";
+    ViewBag.Redirect = "reportSystem";
+    ViewBag.ModalTrigger = "OSR";
+    Layout = "~/Views/Shared/_Modal.cshtml";
+}
+<script>
+    var ControllerName = '@ViewBag.ControllerName';
+    var ActionName = '@ViewBag.ActionName';
+    var idNumber = '@ViewBag.idNumber';
+    var FFID = '@ViewBag.userFFID';
+</script>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">DATA EXTRACTION</div>
+                <div class="card-body">
+                    <table id="data-extraction" class="table-hover" style="width:100%; font-size:10px;">
+                        <thead>
+                            <tr>
+                                <th>M3 #</th>
+                                <th>SOCKET ID</th>
+                                <th>HANDLER ID</th>
+                                <th>HANDLER MODEL</th>  
+                                <th>PACKAGE</th>
+                                <th>DATE REQUEST</th>
+                                <th>EXPECTED DATE OF SETUP</th>
+                                <th>SHIFT</th>
+                                <th>REQUESTED BY</th>
+                                <th>STATUS</th>
+                            </tr>
+                        </thead>
+                        <tbody id="data-extraction-data"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="loader"></div>

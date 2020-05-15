@@ -1,0 +1,152 @@
+﻿@{
+    ViewBag.Title = "CREATE OSR";
+    ViewBag.Redirect = "reportSystem";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script>
+    var ControllerName = '@ViewBag.ControllerName';
+    var ActionName = '@ViewBag.ActionName';
+    var idNumber = '@ViewBag.idNumber';
+</script>
+<div class="container">
+    <div class="row">
+        <div class="col-10">
+            <div class="card">
+                <div class="card-header">CREATE TASK</div>
+                <div class="card-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-4">
+                                <h4>M3 NUMBER</h4>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <input class="form-control" id="m3-number" readonly/>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="row">
+                            <div class="col-4">
+                                TESTER ID
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <input class="form-control" id="tester-id" list="tester-id-datalist"/>
+                                <datalist id="tester-id-datalist"></datalist>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                HANDLER ID
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <input class="form-control" id="handler-id" list="handler-id-datalist" />
+                                <datalist id="handler-id-datalist"></datalist>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                FAMILY
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                @*<select class="form-control" id="family">
+
+                                </select>*@
+                                <input class="form-control" id="family" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                PACKAGE
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <input class="form-control" id="package"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                PROCESS
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-4">
+                                <select class="form-control" id="process">
+                                </select> 
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="row">
+                            <div class="col-4">
+                                ATTACH DOCUMENT
+                            </div>
+                            <div class="col-4">
+                                DOWNLOAD TEMPLATE
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="custom-file">
+                                    <input class="custom-file-input" type="file" id="file-upload-osr" multiple/>
+                                    <label class="custom-file-label" for="customFile">Choose file</label>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <a class="btn btn-primary" target="_blank" href="http://docs.onsemi.com/docserver/download.do?site=Tarlac&docId=19FTA70672E&revision=U&fileId=1950387320.19FTA70672E.U_doc.pdf&fileType=pdf">M3 TEMPLATE</a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                EXPECTED DATE OF SETUP
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <input class="form-control customdate" id="expected-date-of-setup" type="text" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                SHIFT
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <select class="form-control" id="shift">
+                                    <option value="DS">DAY SHIFT</option>
+                                    <option value="NS">NIGHT SHIFT</option>
+                                </select>  
+                            </div>
+                        </div>
+                        @*<div class="row">
+                            <div class="col-4">
+                                STATUS
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <select class="form-control" id="status">
+                                    <option value="FOR PREPARATION">FOR PREPARATION</option>
+                                    <option value="ON GOING PREPARATION">ON GOING PREPARATION</option>
+                                    <option value="READY FOR BUY OFF">READY FOR BUY OFF</option>
+                                    <option value="RELEASED">RELEASED</option>
+                                </select>
+                            </div>
+                        </div>*@
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="btn btn-primary" id="create-form-osr">CREATE FORM</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

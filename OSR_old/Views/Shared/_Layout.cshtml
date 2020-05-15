@@ -1,0 +1,152 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+    <link rel="stylesheet" type="text/css" href="~/Content/bootstrap.min.css" />
+    @*<link rel="stylesheet" type="text/css" href="~/Content/datatables.net-dt/css/jquery.dataTables.min.css">*@
+    <link rel="stylesheet" type="text/css" href="~/Content/daterangepicker.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/dataTables.bootstrap4.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/Assets/lib/fontawesome/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/daterangepicker.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/master.css" />
+    <script>
+        var base_url = "@Request.Url.GetLeftPart(UriPartial.Authority)@Url.Content("~")";
+        var get_url = window.location.pathname;
+        var compare_url = get_url.substring(get_url.lastIndexOf('/') + 1);
+    </script>
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h4>ONLINE SETUP REQUEST</h4>
+            </div>
+
+            <ul class="list-unstyled components">
+                @if (ViewBag.employeeData != null)
+                {
+                    <p style="text-transform: uppercase;">WELCOME @ViewBag.fullName</p>
+                }
+                <li>
+                    <a href="" id="redirect-dashboard"><span class="fa fa-chart-line mr-2"></span>DASHBOARD</a>
+                </li>
+                @if (ViewBag.employeeData != null)
+                {
+                <li>
+                    <a href="" id="redirect-create-form"><span class="fa fa-plus-square mr-2"></span>CREATE FORM</a>
+                </li>
+                }
+                <li>
+                    <a href="" id="redirect-pending-task"><span class="fa fa-hourglass-half mr-2"></span>LIVE UPDATES</a>
+                </li>
+            </ul>
+        </nav>
+
+        <div id="content">
+            <nav class="navbar navbar-expand-lg navbar-light" style="width:auto;">
+                <div class="container-fluid">
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-align-left"></i>
+                        <span>MENU</span>
+                    </button>
+                    @*<button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <i class="fas fa-align-justify"></i>
+                        </button>*@
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav ml-auto">
+
+                            @if (ViewBag.employeeData != null)
+                            {
+                                <li id="logout_user" class="nav-item active">
+                                    <a class="nav-link btn btn-info" style="color:white"><span class="fa fa-sign-out-alt mr-2"></span>LOG-OUT</a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li>
+                                    
+                                </li>
+                                <li id="login_user" class="nav-item active">
+                                    <a class="nav-link btn btn-info" style="color:white" data-toggle="popover" data-placement="bottom"><span class="fa fa-sign-in-alt mr-2"></span>LOG-IN</a>
+                                    <div id="popover-content" class="list-group" style="display: none;">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    USERNAME
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <input id="username" class="form-control" />
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    PASSWORD
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3">
+                                                <div class="col-12">
+                                                    <input id="password" class="form-control" type="password" />
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <button class="btn btn-success" id="log-in" style="float:right">LOG-IN</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            }
+
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            @RenderBody()
+        </div>
+    </div>
+    <footer>
+        <script type="text/javascript" src="~/Scripts/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript" src="~/Scripts/jquery-multidownload.js"></script>
+        <script type="text/javascript" src="~/Scripts/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="~/Scripts/bootstrap.bundle.min.js"></script>
+        <script type="text/javascript" src="~/Scripts/bootstrap-notify.min.js"></script>
+        <script type="text/javascript" src="~/Scripts/datatables.export/buttons.html5.min.js"></script>
+        <script type="text/javascript" src="~/Scripts/datatables.export/dataTables.buttons.min.js"></script>
+        <script type="text/javascript" src="~/Scripts/datatables.export/jszip.min.js"></script>
+        <script type="text/javascript" src="~/Scripts/datatables.export/vfs_fonts.js"></script>
+        <script type="text/javascript" src="~/Scripts/datatables.export/buttons.bootstrap4.min.js"></script>
+        <script type="text/javascript" src="~/Scripts/dataTables.bootstrap4.min.js"></script>
+        <script type="text/javascript" src="~/Scripts/moment.min.js"></script>
+        <script type="text/javascript" src="~/Scripts/daterangepicker.js"></script>
+        <script type="text/javascript" src="~/Scripts/date.js"></script>
+        <script type="text/javascript" src="~/Scripts/popper.js"></script>
+        <script type="text/javascript" src="~/Assets/Dashboard.js"></script>
+        <script type="text/javascript" src="~/Assets/Form.js"></script>
+        <script type="text/javascript" src="~/Assets/Login.js"></script>
+        <script type="text/javascript" src="~/Assets/modal.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#sidebarCollapse').on('click', function () {
+                    $('#sidebar').toggleClass('active');
+                });
+
+                $('[data-toggle="popover"]').popover({
+                    html: true,
+                    content: function () {
+                        return $('#popover-content').html();
+                    }
+                });
+            });
+        </script>
+    </footer>
+</body>
+</html>

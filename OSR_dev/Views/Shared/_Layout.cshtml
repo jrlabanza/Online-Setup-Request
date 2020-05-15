@@ -1,0 +1,262 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+    <link rel="stylesheet" type="text/css" href="~/Content/bootstrap.min.css" />
+    @*<link rel="stylesheet" type="text/css" href="~/Content/datatables.net-dt/css/jquery.dataTables.min.css">*@
+    <link rel="stylesheet" type="text/css" href="~/Content/daterangepicker.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/dataTables.bootstrap4.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/Assets/lib/fontawesome/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/daterangepicker.css" />
+    <link rel="stylesheet" type="text/css" href="~/node_module/fullcalendar/core/main.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/node_module/fullcalendar/daygrid/main.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/node_module/fullcalendar/timegrid/main.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/node_module/fullcalendar/list/main.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/master.css" />
+    <script>
+        var base_url = "@Request.Url.GetLeftPart(UriPartial.Authority)@Url.Content("~")";
+        var get_url = window.location.pathname;
+        var compare_url = get_url.substring(get_url.lastIndexOf('/') + 1);
+        var userDetailsSession = '@ViewBag.fullName';
+    </script>
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div class="sidebar-header" style="background-image: url('../img/1.png')">
+                <h4>ONLINE SETUP REQUEST</h4>
+            </div>
+
+            <div class="panel-group" id="accordion">
+                @if (ViewBag.employeeData != null)
+                {
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <div class="container">
+                                <h5 style="text-transform: uppercase; margin-top:20px">WELCOME @ViewBag.fullName</h5>
+                            </div>
+                        </div>
+                    </div>
+                }
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <a class="nav-link" data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+                            <span class="fa fa-th-list"></span> Final Test
+                        </a>
+                    </div>
+                    <div id="collapse3" class="panel-collapse collapse" style="font-size:12px;">
+                        <div class="panel-body">
+                            <a class="nav-link" href="" id="redirect-dashboard">
+                                <span class="fa fa-chart-line"></span> DASHBOARD
+                            </a>
+                            @if (ViewBag.employeeData != null)
+                            {
+                                <a class="nav-link" href="" id="redirect-create-form">
+                                    <span class="fa fa-plus-square"></span> CREATE FORM
+                                </a>
+                            }
+                            <a class="nav-link" href="" id="redirect-pending-task">
+                                <span class="fa fa-hourglass-half"></span> LIVE UPDATES
+                            </a>
+                            @if (ViewBag.employeeData != null)
+                            {
+                                <a class="nav-link" href="" id="data-extraction-redirect">
+                                    <span class="fa fa-database"></span> DATA EXTRACTION
+                                </a>
+                            }
+
+                            @*<a class="nav-link" href="" id="redirect-pending-task">
+                                <span class="fa fa-percent"></span> HIT RATE
+                            </a>*@
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <a class="nav-link" data-toggle="collapse" data-parent="#accordion" href="#collapse4">
+                            <span class="fa fa-th-list"></span> Burn-In
+                        </a>
+                    </div>
+                    <div id="collapse4" class="panel-collapse collapse" style="font-size:12px;">
+                        <div class="panel-body">
+                            <a class="nav-link" href="" id="redirect-dashboard-burn-in">
+                                <span class="fa fa-chart-line"></span> DASHBOARD
+                            </a>
+                            @if (ViewBag.employeeData != null)
+                            {
+                                <a class="nav-link" href="" id="redirect-create-form-burn-in">
+                                    <span class="fa fa-plus-square"></span> CREATE FORM
+                                </a>
+                            }
+                            <a class="nav-link" href="" id="redirect-pending-task-burn-in">
+                                <span class="fa fa-hourglass-half"></span> LIVE UPDATES
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div id="content">
+            <nav class="navbar navbar-expand-lg navbar-light" style="width:auto;">
+                <div class="container-fluid">
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-align-left"></i>
+                        <span>MENU</span>
+                    </button>
+                    @*<button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <i class="fas fa-align-justify"></i>
+                        </button>*@
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav ml-auto">
+
+                            @if (ViewBag.employeeData != null)
+                            {
+                                <li id="logout_user" class="nav-item active">
+                                    <a class="nav-link btn btn-info" style="color:white"><span class="fa fa-sign-out-alt mr-2"></span>LOG-OUT</a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li>
+                                    
+                                </li>
+                                <li id="login_user" class="nav-item active">
+                                    <a class="nav-link btn btn-info" style="color:white" data-toggle="popover" data-placement="bottom"><span class="fa fa-sign-in-alt mr-2"></span>LOG-IN</a>
+                                    <div id="popover-content" class="list-group" style="display: none; z-index:999999">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    USERNAME
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <input id="username" class="form-control" />
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    PASSWORD
+                                                </div>
+                                            </div>
+                                            <div class="row mb-3">
+                                                <div class="col-12">
+                                                    <input id="password" class="form-control" type="password" />
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <button class="btn btn-success" id="log-in" style="float:right">LOG-IN</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            }
+
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            @RenderBody()
+        </div>
+    </div>
+    <footer>
+        <script type="text/javascript" src="~/Scripts/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript" src="~/Scripts/jquery-multidownload.js"></script>
+        <script type="text/javascript" src="~/Scripts/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="~/Scripts/bootstrap.bundle.min.js"></script>
+        <script type="text/javascript" src="~/Scripts/bootstrap-notify.min.js"></script>
+        <script type="text/javascript" src="~/Scripts/datatables.export/buttons.html5.min.js"></script>
+        <script type="text/javascript" src="~/Scripts/datatables.export/dataTables.buttons.min.js"></script>
+        <script type="text/javascript" src="~/Scripts/datatables.export/jszip.min.js"></script>
+        <script type="text/javascript" src="~/Scripts/datatables.export/vfs_fonts.js"></script>
+        <script type="text/javascript" src="~/Scripts/datatables.export/buttons.bootstrap4.min.js"></script>
+        <script type="text/javascript" src="~/Scripts/dataTables.bootstrap4.min.js"></script>
+        <script type="text/javascript" src="~/Scripts/moment.min.js"></script>
+        <script type="text/javascript" src="~/Scripts/daterangepicker.js"></script>
+        <script type="text/javascript" src="~/Scripts/date.js"></script>
+        <script type="text/javascript" src="~/Scripts/popper.js"></script>
+        <script type="text/javascript" src="~/Scripts/Chart.min.js"></script>
+        <script type="text/javascript" src="~/node_module/fullcalendar/core/main.min.js"></script>
+        <script type="text/javascript" src="~/node_module/fullcalendar/interaction/main.min.js"></script>
+        <script type="text/javascript" src="~/node_module/fullcalendar/daygrid/main.min.js"></script>
+        <script type="text/javascript" src="~/node_module/fullcalendar/timegrid/main.min.js"></script>
+        <script type="text/javascript" src="~/node_module/fullcalendar/list/main.min.js"></script>
+        <script type="text/javascript" src="~/Assets/Dashboard.js"></script>
+        <script type="text/javascript" src="~/Assets/history.js"></script>
+        <script type="text/javascript" src="~/Assets/Form.js"></script>
+        <script type="text/javascript" src="~/Assets/Login.js"></script>
+        <script type="text/javascript" src="~/Assets/modal.js"></script>
+        <script type="text/javascript" src="~/Assets/modalBurnIn.js"></script>
+     
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#sidebarCollapse').on('click', function () {
+                    $('#sidebar').toggleClass('active');
+                });
+                $('[data-toggle="popover"]').popover({
+                    html: true,
+                    content: function () {
+                        return $('#popover-content').html();
+                    }
+                });
+
+            });
+        </script>
+        <script type="text/javascript">
+            $.post(
+                base_url + "Dashboard/data_extraction",
+                function (data) {
+                    var pending = "";
+                    console.log(data);
+                    $.each(data, function (i, data_extraction_data) {
+                        pending += "<tr id='osr_data' class='loadboard_data' style='cursor: pointer; data-osr-id='" + data_extraction_data.id + "'>";
+                        pending += "<td data-osr-id='" + data_extraction_data.id + "'><p><a href='history/" + data_extraction_data.m3Number + "' target='_blank' style='color:blue'>" + data_extraction_data.m3Number + "</a></p></td>";
+                        pending += "<td data-osr-id='" + data_extraction_data.id + "'>" + data_extraction_data.testerID + "</td>";
+                        pending += "<td data-osr-id='" + data_extraction_data.id + "'>" + data_extraction_data.handlerID + "</td>";
+                        pending += "<td data-osr-id='" + data_extraction_data.id + "'>" + data_extraction_data.package + "</td>";
+                        pending += "<td data-osr-id='" + data_extraction_data.id + "'>" + data_extraction_data.family + "</td>";
+                        pending += "<td data-osr-id='" + data_extraction_data.id + "'>" + data_extraction_data.process + "</td>";
+                        pending += "<td data-osr-id='" + data_extraction_data.id + "'>" + data_extraction_data.dateRequest + "</td>";
+                        pending += "<td data-osr-id='" + data_extraction_data.id + "'>" + data_extraction_data.expectedDateofSetup + "</td>";
+                        pending += "<td data-osr-id='" + data_extraction_data.id + "'>" + data_extraction_data.shift + "</td>";
+                        pending += "<td data-osr-id='" + data_extraction_data.id + "'>" + data_extraction_data.requestBy + "</td>";
+                        pending += "<td data-osr-id='" + data_extraction_data.id + "'>" + data_extraction_data.status + "</td>";
+                        pending += "</tr>";
+                    });
+
+                    $("#data-extraction").append(pending);
+
+                    $('#extraction-table').DataTable({
+                        dom: '<".top"B>frt<".bottom"p>',
+                        order: [],
+                        buttons: [{
+                            extend: 'excel', title: '', text: '<i class="fas fa-download"></i>', className: 'mb-1 button_color', filename: function () {
+                                var d = new Date();
+                                return 'REPORT-' + d;
+                            },
+                            exportOptions: {
+                                columns: 'th:not(:last-child)'
+                            }
+                        }],
+                        language: {
+                            searchPlaceholder: "Search Records"
+                        },
+                        autoWidth: true
+                    });
+                }
+            );
+
+            
+        </script>
+    </footer>
+</body>
+</html>

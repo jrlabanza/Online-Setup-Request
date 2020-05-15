@@ -1,0 +1,115 @@
+﻿@{
+    ViewBag.Title = "ONLINE SETUP REQUEST -CENTS";
+    ViewBag.Redirect = "reportSystem";
+    ViewBag.ModalTrigger = "OSR_CENTS";
+    Layout = "~/Views/Shared/_Modal.cshtml";
+}
+<script>
+    var ControllerName = '@ViewBag.ControllerName';
+    var ActionName = '@ViewBag.ActionName';
+    var idNumber = '@ViewBag.idNumber';
+    var FFID = '@ViewBag.userFFID';
+</script>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card mb-4">
+                <div class="card-header">REPORT</div>
+                <div class="card-body">
+                    <table class="table" style="font-size:10px">
+                        <tr>
+                            <th></th>
+                            @*<th>LAST WEEK</th>*@
+                            <th>SATURDAY</th>
+                            <th>SUNDAY</th>
+                            <th>MONDAY</th>
+                            <th>TUESDAY</th>
+                            <th>WEDNESDAY</th>
+                            <th>THURSDAY</th>
+                            <th>FRIDAY</th>
+                            <th>OVERALL</th>
+                        </tr>
+                        <tr>
+                            <td>RELEASED</td>
+                            @*<td id="released-count-last-week"></td>*@
+                            <td id="released-count-saturday"></td>
+                            <td id="released-count-sunday"></td>
+                            <td id="released-count-monday"></td>
+                            <td id="released-count-tuesday"></td>
+                            <td id="released-count-wednesday"></td>
+                            <td id="released-count-thursday"></td>
+                            <td id="released-count-friday"></td>
+                            <td id="released-count" data-released-data=""></td>
+
+                        </tr>
+                        <tr>
+                            <td>FORM CANCELLED</td>
+                            @*<td id="cancelled-count-last-week"></td>*@
+                            <td id="cancelled-count-saturday"></td>
+                            <td id="cancelled-count-sunday"></td>
+                            <td id="cancelled-count-monday"></td>
+                            <td id="cancelled-count-tuesday"></td>
+                            <td id="cancelled-count-wednesday"></td>
+                            <td id="cancelled-count-thursday"></td>
+                            <td id="cancelled-count-friday"></td>
+                            <td id="cancelled-count" data-cancelled-data=""></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card mb-4">
+                <div class="card-header">PENDING</div>
+                <div class="card-body">
+                    <table id="pending" class="table-hover" style="width:100%; font-size:10px;">
+                        <thead>
+                            <tr>
+                                <th>SOC REQUEST#</th>
+                                <th>SOCKET ID</th>
+                                <th>HANDLER ID</th>
+                                <th>HANDLER MODEL</th>
+                                <th>PACKAGE</th>
+                                <th>DATE REQUEST</th>
+                                <th>EXPECTED DATE OF SETUP</th>
+                                <th>REQUESTED BY</th>
+                                <th>STATUS</th>
+                            </tr>
+                        </thead>
+                        <tbody id="pending-data"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">ARCHIVE</div>
+                <div class="card-body">
+                    <table id="released" class="table-hover" style="width:100%; font-size:10px;">
+                        <thead>
+                            <tr>
+                                <th>SOC REQUEST#</th>
+                                <th>SOCKET ID</th>
+                                <th>HANDLER ID</th>
+                                <th>HANDLER MODEL</th>
+                                <th>PACKAGE</th>
+                                <th>DATE REQUEST</th>
+                                <th>EXPECTED DATE OF SETUP</th>
+                                <th>REQUESTED BY</th>
+                                <th>STATUS</th>
+                            </tr>
+                        </thead>
+                        <tbody id="released-data"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="loader"></div>

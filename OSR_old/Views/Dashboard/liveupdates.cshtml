@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+    <link rel="stylesheet" type="text/css" href="~/Content/bootstrap.min.css" />
+    @*<link rel="stylesheet" type="text/css" href="~/Content/datatables.net-dt/css/jquery.dataTables.min.css">*@
+    <link rel="stylesheet" type="text/css" href="~/Content/daterangepicker.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/dataTables.bootstrap4.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/Assets/lib/fontawesome/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/daterangepicker.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/master.css" />
+    <script>
+        var base_url = "@Request.Url.GetLeftPart(UriPartial.Authority)@Url.Content("~")";
+        var get_url = window.location.pathname;
+        var compare_url = get_url.substring(get_url.lastIndexOf('/') + 1);
+    </script>
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-6">
+                    <div class="card mb-4">
+                        <div class="card-header bg-success" style="color:white"><h3>READY FOR PICK UP</h3></div>
+                        <div class="card-body">
+                            <table id="ready-bo" class="table" style="width:100%">
+                                <tbody id="buy-off"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="card mb-4">
+                        <div class="card-header bg-primary" style="color:white"><h3>PENDING</h3></div>
+                        <div class="card-body">
+                            <table id="pending" class="table" style="width:100%">
+                                <tbody id="pending-data"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <footer>
+        <script type="text/javascript" src="~/Scripts/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript" src="~/Scripts/jquery-multidownload.js"></script>
+        <script type="text/javascript" src="~/Scripts/jquery.dataTables.min.js"></script>
+        <script type="text/javascript" src="~/Scripts/bootstrap.bundle.min.js"></script>
+        <script type="text/javascript" src="~/Scripts/bootstrap-notify.min.js"></script>
+        <script type="text/javascript" src="~/Scripts/datatables.export/buttons.html5.min.js"></script>
+        <script type="text/javascript" src="~/Scripts/datatables.export/dataTables.buttons.min.js"></script>
+        <script type="text/javascript" src="~/Scripts/datatables.export/jszip.min.js"></script>
+        <script type="text/javascript" src="~/Scripts/datatables.export/vfs_fonts.js"></script>
+        <script type="text/javascript" src="~/Scripts/datatables.export/buttons.bootstrap4.min.js"></script>
+        <script type="text/javascript" src="~/Scripts/dataTables.bootstrap4.min.js"></script>
+        <script type="text/javascript" src="~/Scripts/moment.min.js"></script>
+        <script type="text/javascript" src="~/Scripts/daterangepicker.js"></script>
+        <script type="text/javascript" src="~/Scripts/date.js"></script>
+        <script type="text/javascript" src="~/Scripts/popper.js"></script>
+        <script type="text/javascript" src="~/Assets/liveupdates.js"></script>
+    </footer>
+</body>
+</html>

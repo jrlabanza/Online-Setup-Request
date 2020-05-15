@@ -1,0 +1,133 @@
+﻿@{
+    ViewBag.Title = "HIT RATE";
+    ViewBag.Redirect = "reportSystem";
+    ViewBag.ModalTrigger = "OSR";
+    Layout = "~/Views/Shared/_Modal.cshtml";
+}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <canvas id="ChartTester" style="margin-top:20px;"></canvas>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    var ControllerName = '@ViewBag.ControllerName';
+    var ActionName = '@ViewBag.ActionName';
+    var idNumber = '@ViewBag.idNumber';
+    var FFID = '@ViewBag.userFFID';
+
+    $(document).ready(function () {
+        var ctx = document.getElementById("ChartTester");
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Monday', 'Tuesday', 'Wednesday', 'Thrusday', 'Friday', 'Saturday', 'Sunday'],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [12, 19, 3, 5, 2, 3, 9],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+
+        $.post(
+            "chart/testers.php",
+            function (data) {
+
+                Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+                Chart.defaults.global.defaultFontColor = '#292b2c';
+
+                var tempDataSorted = data.data.sort(function (a, b) { return b - a });
+                var maximum = tempDataSorted[0].value;
+                var newMax = Number(maximum) + 5;
+
+                //var ctx = document.getElementById("ChartTester");
+
+                //var myLineChart = new Chart(ctx, {
+                //    type: 'bar',
+                //    data: {
+                //        labels: data.labels,
+                //        datasets: [{
+                //            label: "Quantity",
+                //            lineTension: 0.3,
+                //            backgroundColor: "rgba(2,117,216,0.2)",
+                //            borderColor: "rgba(2,117,216,1)",
+                //            pointRadius: 5,
+                //            pointBackgroundColor: "rgba(2,117,216,1)",
+                //            pointBorderColor: "rgba(255,255,255,0.8)",
+                //            pointHoverRadius: 5,
+                //            pointHoverBackgroundColor: "rgba(2,117,216,1)",
+                //            pointHitRadius: 50,
+                //            pointBorderWidth: 2,
+                //            data: data.data
+                //        }],
+                //    },
+                //    options: {
+                //        scales: {
+                //            xAxes: [{
+                //                time: {
+                //                    unit: 'date'
+                //                },
+                //                gridLines: {
+                //                    display: false
+                //                },
+                //                ticks: {
+                //                    maxTicksLimit: 7,
+                //                    autoSkip: false
+                //                }
+                //            }],
+                //            yAxes: [{
+                //                ticks: {
+                //                    min: 0,
+                //                    max: maximum,
+                //                    maxTicksLimit: 5
+                //                },
+                //                gridLines: {
+                //                    color: "rgba(0, 0, 0, .125)",
+                //                }
+                //            }],
+                //        },
+                //        legend: {
+                //            display: false
+                //        }
+                //    }
+                //});
+
+
+
+
+            }
+        );
+    });
+
+</script>

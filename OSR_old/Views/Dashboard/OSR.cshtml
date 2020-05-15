@@ -1,0 +1,102 @@
+﻿@{
+    ViewBag.Title = "ONLINE SETUP REQUEST";
+    ViewBag.Redirect = "reportSystem";
+    Layout = "~/Views/Shared/_Modal.cshtml";
+}
+<script>
+    var ControllerName = '@ViewBag.ControllerName';
+    var ActionName = '@ViewBag.ActionName';
+    var idNumber = '@ViewBag.idNumber';
+    var FFID = '@ViewBag.userFFID';
+</script>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card mb-4">
+                <div class="card-header"><h3>PENDING</h3></div>
+                <div class="card-body">
+                    <table id="pending" class="table-hover" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>M3 #</th>
+                                <th>TESTER ID</th>
+                                <th>HANDLER ID</th>
+                                <th>PACKAGE</th>
+                                <th>FAMILY</th>
+                                <th>PROCESS</th>
+                                
+                                <th>DATE REQUEST</th>
+                                <th>EXPECTED DATE OF SETUP</th>
+                                <th>SHIFT</th>
+                                <th>PREQUESTED BY</th>
+                                <th>STATUS</th>
+                                <th>ATTACHMENT</th>
+                            </tr>
+                        </thead>
+                        <tbody id="pending-data">
+                            @*<tr>
+                                <td>SAMPLE</td>
+                                <td>SAMPLE</td>
+                                <td>SAMPLE</td>
+                                <td>SAMPLE</td>
+                                <td>SAMPLE</td>
+                                <td>SAMPLE</td>
+                                <td>SAMPLE</td>
+                                <td>SAMPLE</td>
+                                <td>SAMPLE</td>
+                                <td>SAMPLE</td>
+                                <td>SAMPLE</td>
+                                <td>SAMPLE</td>
+                            </tr>*@
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header"><h3>RELEASED</h3></div>
+                <div class="card-body">
+                    <table id="released" class="table-hover" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>M3 #</th>
+                                <th>TESTER ID</th>
+                                <th>HANDLER ID</th>
+                                <th>PACKAGE</th>
+                                <th>FAMILY</th>
+                                <th>PROCESS</th>
+                                
+                                <th>DATE REQUEST</th>
+                                <th>EXPECTED DATE OF SETUP</th>
+                                <th>SHIFT</th>
+                                <th>PREQUESTED BY</th>
+                                <th>STATUS</th>
+                                <th>ATTACHMENT</th>
+                            </tr>
+                        </thead>
+                        <tbody id="released-data">
+                            @*<tr>
+                                <td>SAMPLE</td>
+                                <td>SAMPLE</td>
+                                <td>SAMPLE</td>
+                                <td>SAMPLE</td>
+                                <td>SAMPLE</td>
+                                <td>SAMPLE</td>
+                                <td>SAMPLE</td>
+                                <td>SAMPLE</td>
+                                <td>SAMPLE</td>
+                                <td>SAMPLE</td>
+                                <td>SAMPLE</td>
+                                <td>SAMPLE</td>
+                            </tr>*@
+                       </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
