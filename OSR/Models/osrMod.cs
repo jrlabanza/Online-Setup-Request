@@ -989,7 +989,7 @@ namespace OSR.Models
 
             List<IDictionary<string, string>> results = new List<IDictionary<string, string>>();
 
-            string query = @"SELECT m3Number,  testerID, handlerID, package, family, process, dateRequest, expectedDateOfSetup, shift, requestBy, status, releasedTo FROM osr_history ORDER BY dateUpdated DESC";
+            string query = @"SELECT m3Number, UPPER(updater) AS updater, testerID, handlerID, package, family, process, dateRequest, expectedDateOfSetup, shift, requestBy, status, releasedTo FROM osr_history ORDER BY dateUpdated DESC";
 
             results = Connection.GetDataAssociateArray(query, "GET OSR DATA", Connection.expert_connstring);
 

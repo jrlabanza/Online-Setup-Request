@@ -17,6 +17,7 @@
                 append += "<td data-osr-id='" + osr_data.id + "'>" + osr_data.shift + "</td>";
                 append += "<td data-osr-id='" + osr_data.id + "'>" + osr_data.requestBy + "</td>";
                 append += "<td data-osr-id='" + osr_data.id + "'>" + osr_data.status + "</td>";
+                append += "<td data-osr-id='" + osr_data.id + "'>" + osr_data.updater + "</td>";
                 append += "<td data-osr-id='" + osr_data.id + "'>" + osr_data.releasedTo + "</td>";
                 append += "</tr>";
               
