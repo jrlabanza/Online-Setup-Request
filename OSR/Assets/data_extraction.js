@@ -20,18 +20,6 @@
                 append += "<td data-osr-id='" + osr_data.id + "'>" + osr_data.updater + "</td>";
                 append += "<td data-osr-id='" + osr_data.id + "'>" + osr_data.releasedTo + "</td>";
                 append += "</tr>";
-              
-                //$.post(
-                //    base_url + "Dashboard/get_released_to_data_from_data_extract",
-                //    {
-                //        "m3Number": osr_data.m3Number
-                //    },
-                //    function (releasedToData)
-                //    {
-                //        console.log(releasedToData);
-                //        $("#released-to-data").val(releasedToData.releasedTo);
-                //    }
-                //    );
             });
             $("#data-extraction-data").append(append);
             $(".loader").hide();
