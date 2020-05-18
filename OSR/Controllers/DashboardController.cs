@@ -92,7 +92,17 @@ namespace OSR.Controllers
             ViewBag.CanUpdate = this.Get_user_valid_update();
             ViewBag.ModalTrigger = "";
 
-            return View();
+            var employeeData = this.Get_user_session_data();
+
+            if (employeeData == null)
+            {
+                return RedirectToAction("OSR", "Dashboard");
+            }
+            else
+            {
+                return View();
+            }
+          
         }
 
         public ActionResult data_extraction_burnin()
@@ -103,7 +113,16 @@ namespace OSR.Controllers
             ViewBag.CanUpdate = this.Get_user_valid_update();
             ViewBag.ModalTrigger = "";
 
-            return View();
+            var employeeData = this.Get_user_session_data();
+
+            if (employeeData == null)
+            {
+                return RedirectToAction("OSR", "Dashboard");
+            }
+            else
+            {
+                return View();
+            }
         }
 
         public ActionResult data_extraction_qfn()
@@ -114,7 +133,16 @@ namespace OSR.Controllers
             ViewBag.CanUpdate = this.Get_user_valid_update();
             ViewBag.ModalTrigger = "";
 
-            return View();
+            var employeeData = this.Get_user_session_data();
+
+            if (employeeData == null)
+            {
+                return RedirectToAction("OSR", "Dashboard");
+            }
+            else
+            {
+                return View();
+            }
         }
 
         public ActionResult data_extraction_cents()
@@ -125,7 +153,16 @@ namespace OSR.Controllers
             ViewBag.CanUpdate = this.Get_user_valid_update();
             ViewBag.ModalTrigger = "";
 
-            return View();
+            var employeeData = this.Get_user_session_data();
+
+            if (employeeData == null)
+            {
+                return RedirectToAction("OSR", "Dashboard");
+            }
+            else
+            {
+                return View();
+            }
         }
 
         public ActionResult liveupdates()
